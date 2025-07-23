@@ -34,3 +34,7 @@ button:hover {
   background-color: #a400aa;
   color: black;
 }
+
+#back-button {
+border: none;
+}
