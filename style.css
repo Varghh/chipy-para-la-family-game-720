@@ -1,0 +1,36 @@
+body {
+  background-color: black;
+  color: #00ff00;
+  font-family: "Geo", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 20px;
+}
+
+#game-container {
+  border: 2px solid #a400aa;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#scene-image {
+  margin: 20px 0;
+}
+
+button {
+  background: none;
+  border: 1px solid #a400aa;
+  color: #00ff00;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: #a400aa;
+  color: black;
+}
