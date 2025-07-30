@@ -1,6 +1,13 @@
 let currentScene = "inicio";
 let history = []; // guarda las escenas previas
 
+const scenes = {
+    ...scenesInicio,
+    ...scenesTrabajo,
+    ...scenesCiudad,
+    ...scenesFinales
+};
+
 function renderScene() {
     const scene = scenes[currentScene];
 
