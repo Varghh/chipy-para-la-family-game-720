@@ -1,40 +1,290 @@
+* { 
+  margin: 0;
+  padding: 0;
+   font-family: "Geo", sans-serif;
+}
+
 body {
-  background-color: black;
-  color: #00ff00;
-  font-family: "Geo", sans-serif;
+  background-color: #000;
+  overflow: hidden;
   font-size: 1.5rem;
   text-align: center;
-  padding: 20px;
+  color: #00ff00;
 }
 
-#game-container {
-  border: 2px solid #a400aa;
-  padding: 20px;
-  max-width: 500px;
+/* Contenedor CRT */
+.crt-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.crt-monitor {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 600px;
+  background: #111;
+  border-radius: 20px;
+  box-shadow: 
+    0 0 100px rgba(0, 255, 0, 0.3),
+    inset 0 0 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.crt-screen {
+  position: relative;
   width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
+  height: 100%;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: turn-on 1s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Contenido del juego */
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 20px 30px;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+  scrollbar-width: none;
+}
+#game-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Escena */
+#scene-text {
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  max-width: 90%;
+}
+
+/* Imagen */
 #scene-image {
-  margin: 20px 0;
+  max-width: 300px;
+  max-height: 200px;
+  margin: 10px auto;
+  filter: contrast(1.2) brightness(1.1);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Descripción */
+#description-text {
+  font-size: 1.7rem;
+  max-width: 600px;
+  line-height: 1.3;
+}
+
+/* Botones de opciones */
+#choices {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 5px;
 }
 
 button {
-  background: none;
-  border: 1px solid #a400aa;
+  background: transparent;
+  border: 2px solid #a400aa;
   color: #00ff00;
-  padding: 10px;
-  margin: 10px;
+  padding: 5px 10px;
+  margin: 4px 0;
+  font-size: 0.9em;
   cursor: pointer;
-  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  text-shadow: 0 0 5px #00ff00;
+  position: relative;
+  overflow: hidden;;
 }
 
 button:hover {
-  background-color: #a400aa;
-  color: black;
+  background: #a400aa;
+  color: #000;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
 }
 
 #back-button {
-border: none;
+  position: absolute;
+  top: 0.9rem;
+  left: 0.1rem;
+  padding: 0.1rem, 0.2rem;
+  font-size: 0.8rem;
+  border: none;
+}
+
+/* Scanlines */
+.crt-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 2px,
+    rgba(0, 0, 0, 0.3) 4px
+  );
+  pointer-events: none;
+  z-index: 20;
+  animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(10px); }
+}
+
+/* Flicker */
+.crt-flicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 30;
+  animation: flicker 6s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15% { opacity: 0.90626; }
+  20% { opacity: 0.18128; }
+  25% { opacity: 0.83891; }
+  30% { opacity: 0.65583; }
+  35% { opacity: 0.67807; }
+  40% { opacity: 0.26559; }
+  45% { opacity: 0.84693; }
+  50% { opacity: 0.96019; }
+  55% { opacity: 0.08594; }
+  60% { opacity: 0.20313; }
+  65% { opacity: 0.71988; }
+  70% { opacity: 0.53455; }
+  75% { opacity: 0.37288; }
+  80% { opacity: 0.71428; }
+  85% { opacity: 0.70419; }
+  90% { opacity: 0.7003; }
+  95% { opacity: 0.36108; }
+  100% { opacity: 0.24387; }
+}
+
+/* Curva CRT */
+.crt-curve {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.1) 90%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 40;
+}
+
+/* Aberración cromática */
+.crt-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+  animation: rgb-shift 4s ease-in-out infinite alternate;
+}
+
+@keyframes rgb-shift {
+  0%, 100% { filter: none; }
+  25% {
+    filter: 
+      drop-shadow(-1px 0 0 rgba(255, 0, 0, 0.5))
+      drop-shadow(1px 0 0 rgba(0, 0, 255, 0.5));
+  }
+  50% {
+    filter: 
+      drop-shadow(-2px 0 0 rgba(255, 0, 0, 0.7))
+      drop-shadow(2px 0 0 rgba(0, 0, 255, 0.7));
+  }
+  75% {
+    filter: 
+      drop-shadow(-1px 0 0 rgba(255, 0, 0, 0.5))
+      drop-shadow(1px 0 0 rgba(0, 0, 255, 0.5));
+  }
+}
+
+/* Ruido estático */
+.crt-static {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-radial-gradient(circle at 50% 50%, transparent 0, rgba(0, 255, 0, 0.05) 1px, transparent 2px);
+  background-size: 3px 3px;
+  pointer-events: none;
+  z-index: 25;
+  opacity: 0.5;
+  animation: static-noise 0.2s infinite;
+}
+
+@keyframes static-noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, -1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, 0); }
+  60% { transform: translate(1px, 0); }
+  70% { transform: translate(0, -1px); }
+  80% { transform: translate(0, 1px); }
+  90% { transform: translate(-1px, -1px); }
 }
