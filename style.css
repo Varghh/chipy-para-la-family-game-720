@@ -305,6 +305,20 @@ button:hover::before {
   font-size: 1.2rem;
 }
 
+/* Animación de fade-in para botones */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 /* Efecto de encendido de CRT */
 @keyframes turn-on {
