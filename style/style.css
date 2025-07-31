@@ -1,0 +1,406 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  overflow: hidden;
+  font-family: "geo", sans-serif;
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+#game-container::-webkit-scrollbar {
+  display: none;
+}
+
+#scene-text {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #00ff00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#scene-image {
+  max-width: 300px;
+  max-height: 200px;
+  margin: 5px auto;
+}
+
+#description-text {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #00ff00;
+  max-width: 600px;
+}
+
+#choices {
+  margin: 1rem 0;
+  gap: 10px;
+}
+
+button {
+  background: transparent;
+  border: 2px solid #a505a5;
+  color: #00ff00;
+  padding: 1px 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s;
+  text-shadow: 0 0 5px #00ff00;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: #a505a5;
+  color: #ffffff;
+  box-shadow: 0 0 20px #00ff00;
+  transform: scale(1.05);
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+#back-button {
+  border: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 2px 2px;
+  font-size: 1.2rem;
+}
+
+.crt-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.crt-monitor {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 600px;
+  background: #111;
+  border-radius: 20px;
+  box-shadow: 0 0 100px rgba(0, 255, 0, 0.3), inset 0 0 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.crt-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.crt-curve {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 60%, rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  z-index: 40;
+}
+
+/* aberración cromática */
+.crt-rgb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+  animation: rgb-shift 4s ease-in-out infinite alternate;
+}
+
+.crt-toggle {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  z-index: 100;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.crt-toggle:hover {
+  opacity: 1;
+}
+
+.crt-off .crt-scanlines,
+.crt-off .crt-flicker,
+.crt-off .crt-curve,
+.crt-off .crt-rgb,
+.crt-off .crt-static {
+  display: none;
+}
+
+.crt-off #game-container {
+  color: #fff;
+  text-shadow: none;
+}
+
+.crt-off button {
+  border-color: #fff;
+  color: #fff;
+  text-shadow: none;
+}
+
+.crt-off button:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 10px #fff;
+}
+
+.crt-off #scene-text,
+.crt-off #description-text {
+  color: #fff;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+.crt-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.3) 2px, rgba(0, 0, 0, 0.3) 4px);
+  pointer-events: none;
+  z-index: 20;
+  animation: scanlines 8s linear infinite;
+}
+
+.crt-flicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 30;
+  animation: flicker 4s infinite;
+}
+
+.crt-screen {
+  animation: turn-on 1s linear;
+}
+
+.crt-static {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-radial-gradient(circle at 50% 50%, transparent 0, rgba(0, 255, 0, 0.05) 1px, transparent 2px);
+  background-size: 3px 3px;
+  pointer-events: none;
+  z-index: 25;
+  opacity: 0.5;
+  animation: static-noise 0.2s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes turn-on {
+  0% {
+    transform: scale(1, 0.6) translate(0, 0);
+    filter: brightness(30);
+    opacity: 1;
+  }
+  3% {
+    transform: scale(1, 0.6) translate(0, 0);
+    filter: brightness(30);
+    opacity: 1;
+  }
+  4% {
+    transform: scale(1, 0.8) translate(0, 0);
+    filter: brightness(30);
+    opacity: 1;
+  }
+  5% {
+    transform: scale(1, 1) translate(0, 0);
+    filter: brightness(10);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1) translate(0, 0);
+    filter: brightness(1);
+    opacity: 1;
+  }
+}
+@keyframes static-noise {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-1px, -1px);
+  }
+  20% {
+    transform: translate(1px, -1px);
+  }
+  30% {
+    transform: translate(-1px, 1px);
+  }
+  40% {
+    transform: translate(1px, 1px);
+  }
+  50% {
+    transform: translate(-1px, 0);
+  }
+  60% {
+    transform: translate(1px, 0);
+  }
+  70% {
+    transform: translate(0, -1px);
+  }
+  80% {
+    transform: translate(0, 1px);
+  }
+  90% {
+    transform: translate(-1px, -1px);
+  }
+}
+@keyframes rgb-shift {
+  0%, 100% {
+    filter: none;
+  }
+  25% {
+    filter: drop-shadow(-1px 0 0 rgba(255, 0, 0, 0.5)) drop-shadow(1px 0 0 rgba(0, 0, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(-2px 0 0 rgba(255, 0, 0, 0.7)) drop-shadow(2px 0 0 rgba(0, 0, 255, 0.7));
+  }
+  75% {
+    filter: drop-shadow(-1px 0 0 rgba(255, 0, 0, 0.5)) drop-shadow(1px 0 0 rgba(0, 0, 255, 0.5));
+  }
+}
+@keyframes flicker {
+  0% {
+    opacity: 0.27861;
+  }
+  5% {
+    opacity: 0.34769;
+  }
+  10% {
+    opacity: 0.23604;
+  }
+  15% {
+    opacity: 0.90626;
+  }
+  20% {
+    opacity: 0.18128;
+  }
+  25% {
+    opacity: 0.83891;
+  }
+  30% {
+    opacity: 0.65583;
+  }
+  35% {
+    opacity: 0.67807;
+  }
+  40% {
+    opacity: 0.26559;
+  }
+  45% {
+    opacity: 0.84693;
+  }
+  50% {
+    opacity: 0.96019;
+  }
+  55% {
+    opacity: 0.08594;
+  }
+  60% {
+    opacity: 0.20313;
+  }
+  65% {
+    opacity: 0.71988;
+  }
+  70% {
+    opacity: 0.53455;
+  }
+  75% {
+    opacity: 0.37288;
+  }
+  80% {
+    opacity: 0.71428;
+  }
+  85% {
+    opacity: 0.70419;
+  }
+  90% {
+    opacity: 0.7003;
+  }
+  95% {
+    opacity: 0.36108;
+  }
+  100% {
+    opacity: 0.24387;
+  }
+}
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
