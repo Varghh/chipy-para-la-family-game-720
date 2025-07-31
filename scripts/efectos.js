@@ -1,8 +1,8 @@
 // Efecto "glitch"
 setInterval(() => {
-    if (Math.random() > 2) {
+    if (Math.random() > 1.2) {
         const screen = document.querySelector('.crt-screen');
-        screen.style.filter = 'brightness(3) contrast(10)';
+        screen.style.filter = 'brightness(2) contrast(6)';
         setTimeout(() => {
             screen.style.filter = '';
         }, 50);
@@ -86,7 +86,7 @@ class TypewriterEffect {
         // Detener el sonido al saltar
         this.typeSound.pause();
         this.typeSound.currentTime = 0;
-        // Mostrar el texto completo inmediatamente, preservando saltos de línea
+        // Mostrar el texto completo inmediatamente
         if (this.currentText) {
             this.element.innerHTML = this.currentText.replace(/\n/g, '<br>');
         }
