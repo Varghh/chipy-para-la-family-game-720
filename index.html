@@ -25,19 +25,18 @@
         <div class="crt-curve"></div>
         <div class="crt-rgb"></div>
         <div class="crt-static"></div>
-
-        <!-- Tu contenido original del juego -->
         <div id="game-container">
           <div id="scene-text">Hoy es un gran dia.</div>
           <img id="scene-image" src="./images/sol.png" class="img-fluid rounded mx-auto d-block" alt="Se rompio" />
           <div id="description-text">Hoy sale Chipy para la Family Game 720.</div>
-          <div id="choices">
+          <div id="choices" class ="d-flex flex-column mb-3">
             <button id="choice1">> Sentarse a trabajar.</button>
             <button id="choice2">> Renunciar al trabajo.</button>
             <button id="choice3">> Llorar.</button>
           </div>
           <button id="back-button">←</button>
         </div>
+         <button class="crt-toggle" onclick="toggleCRT()">CRT: ON</button>
       </div>
     </div>
   </div>

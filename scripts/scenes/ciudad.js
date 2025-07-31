@@ -2,7 +2,7 @@ const scenesCiudad = {
     renunciar: {
         text: "No tenias trabajo de todos modos.",
         image: "../images/ciudad.png",
-        description: "Salis al mundo exterior.\nAl NORTE tenes la tienda de videjuegos.\nAl SUR, el abismo.\nAl OESTE, un carpincho tomando mate.\nAl ESTE, tu casa.\nUn alien pasa y dice que hay olor a pis.",
+        description: "Al NORTE tenes la tienda de videjuegos.\nAl SUR, el abismo.\nAl OESTE, un carpincho tomando mate.\nAl ESTE, tu casa.\nUn alien pasa y dice que hay olor a pis.",
         choices: [{
                 text: "> Carpincho",
                 next: "carpincho"
