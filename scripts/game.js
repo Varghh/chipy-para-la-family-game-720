@@ -5,8 +5,8 @@ let gameStarted = false; // Controla si el juego ha comenzado
 
 // Inicializar el sistema typewriter
 const typewriter = new TypewriterEffect('description-text', './sounds/typewriter.ogg', {
-    speed: 50,    // Velocidad en ms (más bajo = más rápido)
-    volume: 0.3   // Volumen del sonido (0.0 a 1.0)
+    speed: 50, // Velocidad en ms (más bajo = más rápido)
+    volume: 0.3 // Volumen del sonido (0.0 a 1.0)
 });
 
 const scenes = {
@@ -17,15 +17,21 @@ const scenes = {
 };
 
 // Función para iniciar el juego
-function startGame() {
+async function startGame() {
     if (gameStarted) return;
     
     gameStarted = true;
     
-    // Ocultar pantalla de inicio
     const startScreen = document.getElementById('start-screen');
     const gameContainer = document.getElementById('game-container');
     
+    // Agregar clase de fade-out a la pantalla de inicio
+    startScreen.classList.add('start-fade-out');
+    
+    // Esperar a que termine el fade-out
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Ocultar pantalla de inicio y mostrar juego inmediatamente
     startScreen.style.display = 'none';
     gameContainer.style.display = 'flex';
     
@@ -35,7 +41,7 @@ function startGame() {
         music.play().catch(e => console.log('Audio play prevented:', e));
     }
     
-    // Renderizar la primera escena
+    // Renderizar la primera escena sin delays extras
     renderScene();
 }
 
@@ -65,8 +71,21 @@ async function renderScene() {
     try {
         const scene = scenes[currentScene];
         
-        document.getElementById("scene-text").innerText = scene.text;
-        document.getElementById("scene-image").src = `images/${scene.image}`;
+        // Si es la primera vez que se renderiza, agregar efectos fade-in
+        const isFirstRender = !gameStarted || currentScene === "inicio";
+        
+        const sceneTextEl = document.getElementById("scene-text");
+        const sceneImageEl = document.getElementById("scene-image");
+        const descriptionTextEl = document.getElementById("description-text");
+        
+        // Limpiar clases de animación previas
+        sceneTextEl.classList.remove('fade-in');
+        sceneImageEl.classList.remove('fade-in');
+        descriptionTextEl.classList.remove('fade-in');
+        
+        // Configurar contenido
+        sceneTextEl.innerText = scene.text;
+        sceneImageEl.src = `images/${scene.image}`;
         
         const backBtn = document.getElementById("back-button");
         backBtn.style.display = currentScene === "inicio" ? "none" : "inline-block";
@@ -76,14 +95,14 @@ async function renderScene() {
                 renderScene();
             }
         };
-        
+
         // Limpiar opciones antes de empezar el typewriter
         const choicesContainer = document.getElementById("choices");
         choicesContainer.innerHTML = "";
 
         // Iniciar typewriter y esperar a que termine
         await typewriter.typeText(scene.description);
-        
+
         // Renderizar opciones después de que termine el typewriter
         renderChoices(scene);
     } finally {
@@ -103,10 +122,10 @@ function skipTypewriter() {
 // Event listeners para la pantalla de inicio
 document.addEventListener('DOMContentLoaded', () => {
     const startScreen = document.getElementById('start-screen');
-    
+
     // Hacer clic en cualquier parte de la pantalla de inicio
     startScreen.addEventListener('click', startGame);
-    
+
     // También permitir Enter o Espacio para comenzar
     document.addEventListener('keydown', (e) => {
         if (!gameStarted && (e.key === 'Enter' || e.key === ' ')) {
