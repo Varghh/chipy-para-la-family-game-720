@@ -476,6 +476,25 @@ button:hover::before {
     transform: scale(0.95);
   }
 }
+@media (max-width: 600px) {
+  #scene-text {
+    font-size: 20px;
+  }
+  #scene-image {
+    max-width: 300px;
+    max-height: 260px;
+  }
+  #description-text {
+    font-size: 18px;
+  }
+  #start-image {
+    max-width: 300px;
+    max-height: 260px;
+  }
+  #start-text {
+    font-size: 20px;
+  }
+}
 @media (max-width: 425px) {
   #scene-text {
     font-size: 18px;
