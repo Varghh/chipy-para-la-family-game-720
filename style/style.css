@@ -53,6 +53,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: none;
 }
 
@@ -481,7 +482,7 @@ button:hover::before {
     font-size: 20px;
   }
   #scene-image {
-    max-width: 300px;
+    max-width: 280px;
     max-height: 260px;
   }
   #description-text {
