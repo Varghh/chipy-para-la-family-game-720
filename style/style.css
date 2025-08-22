@@ -477,31 +477,12 @@ button:hover::before {
     transform: scale(0.95);
   }
 }
-@media (max-width: 600px) {
-  #scene-text {
-    font-size: 20px;
-  }
-  #scene-image {
-    max-width: 280px;
-    max-height: 260px;
-  }
-  #description-text {
-    font-size: 18px;
-  }
-  #start-image {
-    max-width: 300px;
-    max-height: 260px;
-  }
-  #start-text {
-    font-size: 20px;
-  }
-}
 @media (max-width: 425px) {
   #scene-text {
     font-size: 18px;
   }
   #scene-image {
-    max-width: 250px;
+    max-width: 225px;
     max-height: 220px;
   }
   #description-text {
@@ -513,6 +494,44 @@ button:hover::before {
   }
   #start-text {
     font-size: 18px;
+  }
+}
+@media (max-width: 330px) {
+  #scene-text {
+    font-size: 16px;
+  }
+  #scene-image {
+    max-width: 200px;
+    max-height: 180px;
+  }
+  #description-text {
+    font-size: 14px;
+  }
+  #start-image {
+    max-width: 200px;
+    max-height: 180px;
+  }
+  #start-text {
+    font-size: 16px;
+  }
+}
+@media (max-width: 310px) {
+  #scene-text {
+    font-size: 14px;
+  }
+  #scene-image {
+    max-width: 180px;
+    max-height: 160px;
+  }
+  #description-text {
+    font-size: 12px;
+  }
+  #start-image {
+    max-width: 180px;
+    max-height: 160px;
+  }
+  #start-text {
+    font-size: 14px;
   }
 }
 
