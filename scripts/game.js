@@ -1,6 +1,7 @@
 let currentScene = "inicio";
 let history = []; // guarda las escenas previas
 let isRendering = false; // Bandera para evitar renderizaciones simultáneas
+let gameStarted = false; // Controla si el juego ha comenzado
 
 // Inicializar el sistema typewriter
 const typewriter = new TypewriterEffect('description-text', './sounds/typewriter.ogg', {
@@ -14,6 +15,29 @@ const scenes = {
     ...scenesCiudad,
     ...scenesFinales
 };
+
+// Función para iniciar el juego
+function startGame() {
+    if (gameStarted) return;
+    
+    gameStarted = true;
+    
+    // Ocultar pantalla de inicio
+    const startScreen = document.getElementById('start-screen');
+    const gameContainer = document.getElementById('game-container');
+    
+    startScreen.style.display = 'none';
+    gameContainer.style.display = 'flex';
+    
+    // Iniciar música si está habilitada
+    const music = document.getElementById('background-music');
+    if (isMusicEnabled && music.paused) {
+        music.play().catch(e => console.log('Audio play prevented:', e));
+    }
+    
+    // Renderizar la primera escena
+    renderScene();
+}
 
 function renderChoices(scene) {
     const choicesContainer = document.getElementById("choices");
@@ -76,13 +100,29 @@ function skipTypewriter() {
     }
 }
 
+// Event listeners para la pantalla de inicio
+document.addEventListener('DOMContentLoaded', () => {
+    const startScreen = document.getElementById('start-screen');
+    
+    // Hacer clic en cualquier parte de la pantalla de inicio
+    startScreen.addEventListener('click', startGame);
+    
+    // También permitir Enter o Espacio para comenzar
+    document.addEventListener('keydown', (e) => {
+        if (!gameStarted && (e.key === 'Enter' || e.key === ' ')) {
+            startGame();
+            e.preventDefault();
+        }
+    });
+});
+
 // Permitir al usuario saltar el typewriter haciendo clic en cualquier parte del contenedor, scene-text o scene-image
 document.getElementById('description-text').addEventListener('click', skipTypewriter);
 document.getElementById('scene-text').addEventListener('click', skipTypewriter);
 document.getElementById('scene-image').addEventListener('click', skipTypewriter);
 
 document.addEventListener('keydown', (e) => {
-    if ((e.key === 'Enter' || e.key === ' ') && typewriter.isTyping) {
+    if (gameStarted && (e.key === 'Enter' || e.key === ' ') && typewriter.isTyping) {
         typewriter.stopTyping();
         // Renderizar opciones inmediatamente al saltar
         renderChoices(scenes[currentScene]);
@@ -90,6 +130,8 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// No cargar la escena automáticamente al cargar la página
 window.onload = () => {
-    renderScene();
+    // La pantalla de inicio ya está visible por defecto
+    console.log('Juego cargado. Presiona para comenzar.');
 };

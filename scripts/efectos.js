@@ -9,6 +9,9 @@ setInterval(() => {
     }
 }, 3000);
 
+// Variable global para controlar el estado de la música
+let isMusicEnabled = true;
+
 // Función para activar/desactivar efectos CRT
 function toggleCRT() {
     const screen = document.querySelector('.crt-screen');
@@ -18,6 +21,23 @@ function toggleCRT() {
     toggle.textContent = screen.classList.contains('crt-off') ? 'CRT: OFF' : 'CRT: ON';
 }
 
+// Función para activar/desactivar música
+function toggleMusic() {
+    const music = document.getElementById('background-music');
+    const toggle = document.querySelector('.music-toggle');
+    
+    isMusicEnabled = !isMusicEnabled;
+    
+    if (isMusicEnabled) {
+        music.play().catch(e => console.log('Audio play prevented:', e));
+        toggle.textContent = 'MUSIC: ON';
+    } else {
+        music.pause();
+        toggle.textContent = 'MUSIC: OFF';
+    }
+}
+
+// Efecto de máquina de escribir
 class TypewriterEffect {
     constructor(elementId, audioSrc, options = {}) {
         this.element = document.getElementById(elementId);
@@ -102,3 +122,15 @@ class TypewriterEffect {
         this.typeSound.volume = Math.max(0, Math.min(1, volume));
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("background-music");
+    music.volume = 0.7;
+    
+    // No reproducir música automáticamente, esperar a que se inicie el juego
+    document.addEventListener("click", () => {
+        if (music.paused && isMusicEnabled) {
+            music.play().catch(e => console.log('Audio play prevented:', e));
+        }
+    });
+});
