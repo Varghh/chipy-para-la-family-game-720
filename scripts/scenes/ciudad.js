@@ -8,8 +8,8 @@ const scenesCiudad = {
                 next: "carpincho"
             },
             {
-                text: "> Ir con el carpincho, CON ENTUSIASMO.",
-                next: "carpincho"
+                text: "> Ir al norte.",
+                next: "abismo"
             }
         ]
     },

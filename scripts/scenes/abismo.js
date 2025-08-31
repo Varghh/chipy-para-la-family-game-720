@@ -44,7 +44,7 @@ const scenesAbismo = {
     abismo_descenso: {
         text: "Te tiras de clavado como un pelotudo.",
         image: "../images/abismo.jpg",
-        description: "Sentir el aire silvar en tus oidos, un gecko en patineta te dice que caigas en posicion estrella.",
+        description: "Sentis el aire silvar en tus oidos, un gecko en patineta te dice que caigas en posicion estrella.",
         choices: [{
                 text: "> Caer en posicion estrella.",
                 next: "abismo_final"
@@ -81,7 +81,7 @@ const scenesAbismo = {
     abismo_bienvenida: {
         text: "Una rata con una media en la cabeza te da la bienvenida.",
         image: "../images/roberto.jpg",
-        description: "'Bienvenido al abismo. Soy Roberto, Ministro de caidas accidentales. Te explico las reglas rapidamente:\n1 - No hay reglas.\n2 - No escupir.\n3 - Usar medias en la cabeza.'",
+        description: "'Bienvenido. Soy Roberto, Ministro de caidas accidentales. Te explico las reglas:\n1 - No hay reglas.\n2 - No escupir.\n3 - Usar medias en la cabeza.'",
         choices: [{
                 text: "> Preguntar por las medias.",
                 next: "abismo_medias"
@@ -89,10 +89,6 @@ const scenesAbismo = {
             {
                 text: "> Escupi mientras caia.",
                 next: "abismo_escupir"
-            },
-            {
-                text: "> Porque hay reglas si se supone que no hay reglas.",
-                next: "abismo_reglas"
             }
         ]
     },
@@ -125,20 +121,6 @@ const scenesAbismo = {
             {
                 text: "> Escupir de vuelta.",
                 next: "abismo_finalmedia"
-            }
-        ]
-    },
-    abismo_reglas: {
-        text: "Roberto se encoge de hombros.",
-        image: "../images/roberto.jpg",
-        description: "'No se que decirte, yo leo lo que dice el libreto.'",
-        choices: [{
-                text: "> Suspirar y pedirle una media.",
-                next: "abismo_medias"
-            },
-            {
-                text: "> Ya aprendi a no joder con eso, pedirle una media.",
-                next: "abismo_medias"
             }
         ]
     },
@@ -223,9 +205,9 @@ const scenesAbismo = {
     abismo_secreto: {
         text: "OH NO DESCUBRISTE MI IDENTIDAD SECRETA.",
         image: "../images/monica2.jpg",
-        description: "Monica levanta su mascara y resulta que todo este tiempo era Bruce Willis.\n'Me descubriste, nunca tuve demencia, solo necesitaba donde esconderme porque la gente no dejaba de preguntarme por el final de Sexto Sentido.'",
+        description: "Monica levanta su mascara y resulta que todo este tiempo era Bruce Willis.\n'Me descubriste, nunca tuve demencia, solo necesitaba donde esconderme.'",
         choices: [{
-                text: "> ¿Sos mi actor favorito Vin Diesel, me puedo quedar a vivir con vos?.",
+                text: "> Quedarte a vivir con Vin Diesel.",
                 next: "abismo_pelafinal"
             },
             {
@@ -278,7 +260,7 @@ const scenesAbismo = {
     abismo_probabilidades: {
         text: "La maquina explo-echo Shell script failure!undefined_command --explode.",
         image: "../images/maquina.jpg",
-        description: "NullPointerException: Reality is null\nConcurrentModificationException: Timeline altered\nSegmentationFault: Core dumped\nFileNotFoundException: Sanity.txt not found\nOverflowError: Integer overflow in sanity check",
+        description: "NullPointerException: Reality is null ConcurrentModificationException: Timeline altered SegmentationFault: Core dumped FileNotFoundException: Sanity.txt not found OverflowError: Integer overflow in sanity check",
         choices: [{
                 text: "> Ay no.",
                 next: "nowhere"
