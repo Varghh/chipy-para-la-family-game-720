@@ -14,6 +14,7 @@ const scenes = {
     ...scenesTrabajo,
     ...scenesCiudad,
     ...scenesAbismo,
+    ...scenesNowhere,
     ...scenesFinales
 };
 
