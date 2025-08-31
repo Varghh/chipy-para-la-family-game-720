@@ -1,7 +1,7 @@
 const scenesInicio = {
     inicio: {
         text: "Hoy es un gran día.",
-        image: "../images/sol.png",
+        image: "../images/sol.jpg",
         description: "Hoy sale Chipy para la Family Game 720.",
         choices: [{
                 text: "> Sentarse a trabajar.",

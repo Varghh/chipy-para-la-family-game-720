@@ -13,6 +13,7 @@ const scenes = {
     ...scenesInicio,
     ...scenesTrabajo,
     ...scenesCiudad,
+    ...scenesAbismo,
     ...scenesFinales
 };
 
