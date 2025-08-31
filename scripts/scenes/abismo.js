@@ -70,7 +70,7 @@ const scenesAbismo = {
         ]
     },
     abismo_aterrizaje: {
-        text: "En enorme colchon, comodo, mullido y suave amortigua tu caida.",
+        text: "Un enorme colchon, comodo, mullido y suave amortigua tu caida.",
         image: "../images/canon.jpg",
         description: "Tus gritos alertaron a los habitantes de tu caida, siluetas negras se acercan, estas seguro que a alguien le pagaron por usar ese colchon en particular.",
         choices: [{
