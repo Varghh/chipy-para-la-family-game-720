@@ -71,7 +71,7 @@ const scenesFinales = {
             next: "inicio"
         }, ]
     },
-    ending_home: {
+    final_home: {
         text: "Abrís los ojos en tu habitación.",
         image: "../images/chippy.jpg",
         description: "FINAL10\nSobre tu mesa hay un cartucho de Chipy para la Family Game 720. Al lado hay una media vieja y un mate tapado... Sonreis...\nSuperaste todos los obstaculos\nMientras el juego enciende, pones tu mano sobre la pantalla, se siente caliente, como la carne... pero no es carne...\naun no.",
@@ -80,7 +80,7 @@ const scenesFinales = {
             next: "inicio"
         }]
     },
-    ending_void: {
+    final_void: {
         text: "Decidís quedarte en el vacío.",
         image: "../images/nowhere.jpg",
         description: "'FINAL 11\nBienvenido al equipo, tu siguiente historia comienza ahora...'\nEl narrador te toma de la mano y te lleva a un lugar donde las historias no terminan nunca, donde las ranas tiran fireballs, las medias en la cabeza son moda y tu estupidez no tiene limites.\nGracias por jugar a Chipy para la Family Game 720.",
