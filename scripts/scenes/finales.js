@@ -71,7 +71,7 @@ const scenesFinales = {
             next: "inicio"
         }, ]
     },
-    final_home: {
+    final_chippy: {
         text: "Abrís los ojos en tu habitación.",
         image: "../images/chippy.jpg",
         description: "FINAL10\nSobre tu mesa hay un cartucho de Chipy para la Family Game 720. Al lado hay una media vieja y un mate tapado... Sonreis...\nSuperaste todos los obstaculos\nMientras el juego enciende, pones tu mano sobre la pantalla, se siente caliente, como la carne... pero no es carne...\naun no.",
