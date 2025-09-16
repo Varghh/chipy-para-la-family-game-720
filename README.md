@@ -39,7 +39,7 @@ Tu feedback ~~no~~ es bienvenido.
 A: No se.
 
 **Q: ¿Qué es *Chippy*?**  
-A:
+A: [redacted]
 
 **Q: ¿Sos realmente una vaca?**  
 A: Si.
