@@ -15,14 +15,15 @@
 
 Tu camino sera duro, cuestionaras la realidad y, quizás, descubriras los **inicios de la existencia misma**.  
 No hay garantías, solo elecciones.  
+11 Finales.
 
 ---
 
 ## 🎮 Controles
 
-- 👉 **Click en la imagen** → Avanza o saltea el texto.  
+- 👉 **Click en la imagen** → Saltea el texto.  
 - ⌨️ **Barra espaciadora** → También saltea el texto.  
-- 🔄 **Después de cada final** → Si hacés click en el texto, volvés al principio de la aventura.  
+- 🔄 **Después de cada final** → Si hacés click en la unica opcion, volvés al principio de la aventura.  
 - ⬅️ **Flecha arriba a la izquierda** → Retrocede una escena.  
 
 ---
