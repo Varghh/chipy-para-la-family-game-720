@@ -11,9 +11,9 @@
  
 # Chippy, para la family game 720
 
-### ¿Estás listo para emprender una aventura donde tu **único objetivo** es conseguir ese juego secreto que solo vos sabés que existe y está por salir a la venta?  
+### Tu **único objetivo** es conseguir el juego Chippy, para la consola Family game 720, solo vos sabes que ese juego existe. 
 
-En tu camino vas a atravesar **lugares bizarros**, cuestionar la realidad y, quizás, descubrir los **inicios de la existencia misma**.  
+Tu camino sera duro, cuestionaras la realidad y, quizás, descubriras los **inicios de la existencia misma**.  
 No hay garantías, solo elecciones.  
 
 ---
@@ -29,4 +29,4 @@ No hay garantías, solo elecciones.
 
 ## 🚧 Estado del proyecto
 Proyecto terminado con mucho amor retro, whisky y un toque de vaporwave pixelado.  
-¡Tu feedback  es bienvenido!
+Tu feedback ~~no~~ es bienvenido.
