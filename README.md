@@ -29,5 +29,25 @@ No hay garantías, solo elecciones.
 ---
 
 ## 🚧 Estado del proyecto
-Proyecto terminado con mucho amor retro, whisky y un toque de vaporwave pixelado.  
+Proyecto terminado con whisky, vaporwave, nicotina y 16 bits.  
 Tu feedback ~~no~~ es bienvenido.
+
+---
+## ❓ Preguntas Frecuentes (FAQ)
+
+**Q: ¿Por qué creaste este juego?**  
+A: No se.
+
+**Q: ¿Qué es *Chippy*?**  
+A: Vos sos Chippy.
+
+**Q: ¿Sos realmente una vaca?**  
+A: Si.
+
+**Q: ¿Cual es tu motivación?**  
+A: Odio.  
+
+**Q: ¿Este juego corre en la Family Game 720?**  
+A: Si. 
+
+---
