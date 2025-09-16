@@ -9,7 +9,7 @@
 </pre>
 </div>
  
-# 🐮 Cow Soft presenta...
+# Chippy, para la family game 720
 
 ### ¿Estás listo para emprender una aventura donde tu **único objetivo** es conseguir ese juego secreto que solo vos sabés que existe y está por salir a la venta?  
 
